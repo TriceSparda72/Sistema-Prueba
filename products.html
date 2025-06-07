@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="products.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Gestión de Productos</h1>
+    </header>
+    
+    <div class="container">
+        <main>
+            <h2>Lista de Productos</h2>
+            <div class="card">
+                <table id="productTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Stock Local</th>
+                            <th>Stock Almacén</th>
+                            <th>Precio Unitario</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Contenido dinámico cargado desde JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <h2>Agregar Producto</h2>
+            <div class="card">
+                <form id="addProductForm">
+                    <label for="productName">Nombre:</label>
+                    <input type="text" id="productName" name="productName" required>
+                    
+                    <label for="stockLocal">Stock Local:</label>
+                    <input type="number" id="stockLocal" name="stockLocal" min="0" required>
+
+                    <label for="stockWarehouse">Stock Almacén:</label>
+                    <input type="number" id="stockWarehouse" name="stockWarehouse" min="0" required>
+
+                    <label for="unitPrice">Precio Unitario:</label>
+                    <input type="number" id="unitPrice" name="unitPrice" step="0.01" required>
+
+                    <button type="submit">Agregar Producto</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
