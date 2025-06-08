@@ -1,0 +1,77 @@
+/* ESTILOS ESPECÍFICOS DEL INVENTARIO */
+
+/* Grid de clientes */
+#inventoryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+/* Tarjetas de clientes */
+.client-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.client-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Tabla de inventario */
+#inventarioTabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#inventarioTabla th {
+    background-color: #2b95be;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+#inventarioTabla td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+}
+
+#inventarioTabla tr:last-child td {
+    border-bottom: none;
+}
+
+#inventarioTabla tr:hover td {
+    background-color: #f8f9fa;
+}
+
+/* Botones de acción */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-edit, .btn-delete {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-edit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}

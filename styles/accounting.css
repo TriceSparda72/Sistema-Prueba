@@ -1,0 +1,104 @@
+/* Estilos para el grid de contabilidad */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+    margin-top: 1.5rem;
+}
+
+.card-grid .card {
+    background: white;
+    border-radius: 12px;
+    padding: 0; /* Eliminamos el padding para que el botón ocupe todo */
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.card-grid .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-grid .card button {
+    width: 100%;
+    height: 100%;
+    padding: 2rem 1.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #2d3748;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.card-grid .card button::before {
+    content: '';
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-grid .card:hover button {
+    background: linear-gradient(135deg, #f7fafc, #ebf8ff);
+}
+
+/* Iconos específicos para cada tarjeta */
+.card-grid .card:nth-child(1) button::before {
+    content: '📊';
+}
+
+.card-grid .card:nth-child(2) button::before {
+    content: '💵';
+}
+
+.card-grid .card:nth-child(3) button::before {
+    content: '🕴️';
+}
+
+/* Efecto de borde inferior colorido al hover */
+.card-grid .card:hover {
+    border-bottom: 3px solid #2b95be;
+}
+
+/* Responsive para móviles */
+@media (max-width: 640px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-grid .card button {
+        padding: 1.5rem 1rem;
+    }
+}
+
+main h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: #2c3e50;
+}
+
+main h2::before,
+main h2::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+main h2::before {
+    margin-right: 1rem;
+}
+
+main h2::after {
+    margin-left: 1rem;
+}
