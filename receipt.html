@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recibo de Venta</title>
+  <link rel="stylesheet" href="styles/index.css" />
+  <link rel="stylesheet" href="styles/receipt.css" />
+  <script src="receipt.js" defer></script>
+</head>
+<body>
+  <header><h1>Distribuidora ROCO C.A</h1></header>
+  <div class="container">
+    <main>
+      <div class="receipt-header">
+        <div>
+          <label>N° Factura:</label>
+          <span id="invoiceNumberDisplay">---</span>
+          <input type="hidden" id="invoiceNumber" name="invoiceNumber" />
+        </div>
+        <div>
+          <label>N° Control:</label>
+          <span id="controlNumberDisplay">---</span>
+          <input type="hidden" id="controlNumber" name="controlNumber" />
+        </div>
+        <div>
+          <label>Fecha:</label>
+          <span id="dateDisplay">---</span>
+          <input type="hidden" id="date" name="date" />
+        </div>
+      </div>
+
+      <form id="receiptForm" class="card">
+        <div class="row">
+          <div class="form-field">
+            <label for="razonSocial">Razón Social:</label>
+            <input type="text" id="razonSocial" name="razonSocial" required />
+          </div>
+          <div class="form-field">
+            <label for="ordenCompra">Orden de Compra:</label>
+            <input type="text" id="ordenCompra" name="ordenCompra" />
+          </div>
+          <div class="form-field">
+            <label for="ordenEntrega">Orden de Entrega:</label>
+            <input type="text" id="ordenEntrega" name="ordenEntrega" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-field">
+            <label for="rif">RIF:</label>
+            <input type="text" id="rif" name="rif" required />
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" />
+          </div>
+          <div class="form-field">
+            <label for="domicilioFiscal">Domicilio Fiscal:</label>
+            <input type="text" id="domicilioFiscal" name="domicilioFiscal" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-field">
+            <label for="productDescription">Descripción:</label>
+            <select id="productDescription" name="productDescription">
+                <option disabled selected>Selecciona un producto</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="unitPrice">Precio Unitario ($):</label>
+            <input type="text" id="unitPrice" name="unitPrice" readonly />
+          </div>
+          <div class="form-field">
+            <label for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" name="quantity" min="1" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-field">
+            <label>Total ($):</label>
+            <span id="total">$0.00</span>
+          </div>
+          <div class="form-field">
+            <label>IVA (16%):</label>
+            <span id="iva">$0.00</span>
+          </div>
+          <div class="form-field">
+            <label>Total a pagar ($):</label>
+            <span id="totalPago">$0.00</span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Condiciones de Pago:</label>
+          <div class="radio-group">
+            <input type="radio" id="contado" name="condicionPago" value="Contado" />
+            <label for="contado">Contado</label>
+            <input type="radio" id="credito" name="condicionPago" value="Crédito" />
+            <label for="credito">Crédito</label>
+          </div>
+        </div>
+
+        <form id="receiptForm" class="card">
+  <div class="form-actions">
+    <button type="submit">Generar Recibo</button>
+  </div>
+</form>
+
+<script>
+document.getElementById("receiptForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // 🔹 Evita que la página se recargue
+
+    const formData = new FormData(this);
+
+    fetch("guardar_recibo.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alert("✅ Recibo generado correctamente.");
+            window.location.reload(); // 🔹 Recarga la página para actualizar la lista de productos
+        } else {
+            alert("❌ Error al generar el recibo.");
+        }
+    })
+    .catch(error => console.error("❌ Error al enviar datos:", error));
+});
+</script>
+<button id="downloadPDF">📄 Descargar Recibo en PDF</button>
+
+<script>
+document.getElementById("downloadPDF").addEventListener("click", function() {
+    window.location.href = "db/generar_pdf.php"; // 🔹 Redirige a `generar_pdf.php` para descargar el PDF
+});
+</script>
+      </form>
+    </main>
+  </div>
+  <button id="backButton" onclick="window.history.back()">⬅️</button>
+</body>
+</html>

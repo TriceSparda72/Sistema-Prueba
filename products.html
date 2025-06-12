@@ -5,52 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Productos</title>
     <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/products.css">
     <script src="products.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Gestión de Productos</h1>
+        <h1>Distribuidora ROCO C.A - Productos</h1>
     </header>
-    
+
     <div class="container">
+        <button id="toggleMenu" class="toggle-button">🏠</button>
+
+        <!-- Menú lateral -->
+        <aside id="sidebar">
+            <nav>
+                <ul>
+                    <li><button class="menu-item" onclick="location.href='inicio.html'">🏡 Inicio</button></li>
+                    <li><button class="menu-item" onclick="location.href='products.html'">🛒 Productos</button></li>
+                    <li><button class="menu-item" onclick="location.href='inventory.html'">🗂 Inventario</button></li>
+                    <li><button class="menu-item" onclick="location.href='history.html'">📜 Historial</button></li>
+                    <li><button class="menu-item" onclick="location.href='deliveries.html'">🚚 Entregas</button></li>
+                    <li><button class="menu-item" onclick="location.href='login.html'">❌ Cerrar Sesión</button></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Contenido principal -->
         <main>
-            <h2>Lista de Productos</h2>
+            <h2>Productos Registrados</h2>
             <div class="card">
                 <table id="productTable">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Stock Local</th>
                             <th>Stock Almacén</th>
-                            <th>Precio Unitario</th>
-                            <th>Acciones</th>
+                            <th>Precio Unitario ($)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Contenido dinámico cargado desde JavaScript -->
+                        <!-- Productos cargados dinámicamente desde `products.js` -->
                     </tbody>
                 </table>
             </div>
-            
-            <h2>Agregar Producto</h2>
+
+            <h2>Registrar Nuevo Producto</h2>
             <div class="card">
                 <form id="addProductForm">
-                    <label for="productName">Nombre:</label>
-                    <input type="text" id="productName" name="productName" required>
-                    
-                    <label for="stockLocal">Stock Local:</label>
-                    <input type="number" id="stockLocal" name="stockLocal" min="0" required>
+                    <div class="form-field">
+                        <label for="productName">Nombre del Producto:</label>
+                        <input type="text" id="productName" name="productName" required>
+                    </div>
 
-                    <label for="stockWarehouse">Stock Almacén:</label>
-                    <input type="number" id="stockWarehouse" name="stockWarehouse" min="0" required>
+                    <div class="form-field">
+                        <label for="stockLocal">Stock en Local:</label>
+                        <input type="number" id="stockLocal" name="stockLocal" min="0" required>
+                    </div>
 
-                    <label for="unitPrice">Precio Unitario:</label>
-                    <input type="number" id="unitPrice" name="unitPrice" step="0.01" required>
+                    <div class="form-field">
+                        <label for="stockAlmacen">Stock en Almacén:</label>
+                        <input type="number" id="stockAlmacen" name="stockAlmacen" min="0" required>
+                    </div>
 
-                    <button type="submit">Agregar Producto</button>
+                    <div class="form-field">
+                        <label for="unitPrice">Precio Unitario ($):</label>
+                        <input type="number" id="unitPrice" name="unitPrice" step="0.01" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit">Registrar Producto</button>
+                    </div>
                 </form>
             </div>
         </main>
+
+        <!-- Botón de Regresar -->
+        <button id="backButton" onclick="window.history.back()">⬅️</button>
     </div>
 </body>
 </html>

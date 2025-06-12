@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entregas y Recogidas</title>
-    <link rel="stylesheet" href="styles/index.css">
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="styles/deliveries.css">
+    <script src="deliveries.js" defer></script>
 </head>
 <body>
     <header>
@@ -22,8 +22,10 @@
                         <button class="menu-item" onclick="location.href='inicio.html'">🏡 Inicio</button>
                     </li>
                     <li>
-                        <button class="menu-item" onclick="toggleSubMenu('inventarioSubmenu')">🗂 Inventario</button>
-                        <ul id="inventarioSubmenu" class="submenu"></ul>
+                        <button class="menu-item" onclick="location.href='products.html'">🛒 Productos</button>
+                    </li>
+                    <li>
+                        <button class="menu-item" onclick="location.href='inventory.html'">🗂 Inventario</button>
                     </li>
                     <li>
                         <button class="menu-item" onclick="location.href='register-local.html'">🏢 Registrar Local</button>
@@ -55,10 +57,12 @@
                         <!-- Locales dinámicos cargados desde JavaScript -->
                     </select>
 
-                    <label for="productType">Tipo de Producto:</label>
+                    <div class="form-field">
+                        <label for="productType">Tipo de Producto:</label>
                     <select id="productType" name="productType" required>
-                        <option value="Botellones">Botellones</option>
-                    </select>
+                        <option value="" disabled selected>Selecciona un producto</option>
+                        </select>
+                    </div>
 
                     <label for="quantity">Cantidad:</label>
                     <input type="number" id="quantity" name="quantity" min="1" required>
@@ -94,7 +98,7 @@
         </main>
 
         <!-- Botón de Regresar -->
-        <button id="backButton" onclick="window.history.back()">⬅️ Regresar</button>
+        <button id="backButton" onclick="window.history.back()">⬅️</button>
     </div>
 </body>
 </html>

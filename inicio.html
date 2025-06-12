@@ -25,12 +25,13 @@
                         </button>
                     </li>
                     <li>
-                        <button class="menu-item" onclick="toggleSubMenu('inventarioSubmenu')">
+                        <button class="menu-item" onclick="location.href='products.html'">
+                            🛒 Productos</button>
+                    </li>
+                    <li>
+                        <button class="menu-item" onclick="location.href='inventory.html'">
                             🗂 Inventario
                         </button>
-                        <ul id="inventarioSubmenu" class="submenu">
-                            <!-- Submenús dinámicos cargados automáticamente -->
-                        </ul>
                     </li>
                     <li>
                         <button class="menu-item" onclick="location.href='register-local.html'">
@@ -53,6 +54,10 @@
                         </button>
                     </li>
                     <li>
+                        <button class="menu-item" onclick="location.href='receipt.html'">
+                            Recibo</button>
+                    </li>
+                    <li>
                         <button class="menu-item" onclick="location.href='login.html'">
                             ❌ Cerrar Sesión
                         </button>
@@ -60,30 +65,6 @@
                 </ul>
             </nav>
         </aside>
-
-        <!-- Contenido principal -->
-        <main id="mainContent">
-            <h2>Bienvenido, Admin</h2>
-            <div class="grid-container">
-                <button class="grid-item" onclick="location.href='inventory.html'">
-                    🗂 Inventario
-                </button>
-                <button class="grid-item" onclick="location.href='register-local.html'">
-                    🏢 Registrar Local
-                </button>
-                <button class="grid-item" onclick="location.href='accounting.html'">
-                    💰 Contabilidad</button>
-                <button class="grid-item" onclick="location.href='history.html'">
-                    📜 Historial
-                </button>
-                <button class="grid-item" onclick="location.href='deliveries.html'">
-                    🚚 Entregas/Recogidas
-                </button>
-            </div>
-        </main>
-
-        <!-- Botón de Regresar -->
-        <button id="backButton" onclick="window.history.back()">⬅️ Regresar</button>
     </div>
 </body>
 </html>

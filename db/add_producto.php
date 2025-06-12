@@ -1,31 +1,30 @@
 <?php
+header("Content-Type: application/json");
 include "db_connect.php";
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+header("Content-Type: application/json"); // 👈 Aseguramos que solo devuelve JSON
 
-// Verificar si la solicitud es POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombreProducto = $_POST["Nombre_Producto"] ?? "";
-    $stockLocal = $_POST["Stock_Local"] ?? 0;
-    $stockAlmacen = $_POST["Stock_Almacén"] ?? 0;
-    $precioUnitario = $_POST["Precio_Unitario"] ?? 0;
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $productName = $_POST["productName"] ?? "";
+    $stockLocal = $_POST["stockLocal"] ?? 0;
+    $stockAlmacen = $_POST["stockAlmacen"] ?? 0;
+    $unitPrice = $_POST["unitPrice"] ?? 0.00;
 
-    // Validar que el nombre del producto no esté vacío
-    if (empty($nombreProducto)) {
-        echo json_encode(["status" => "error", "message" => "El nombre del producto es obligatorio"]);
-        exit;
+    if (empty($productName) || $stockLocal < 0 || $stockAlmacen < 0 || $unitPrice < 0) {
+        echo json_encode(["status" => "error", "message" => "Datos inválidos"]);
+        exit();
     }
 
-    // Preparar consulta para insertar un nuevo producto
-    $stmt = $conn->prepare("INSERT INTO Producto (Nombre_Producto, Stock_Local, Stock_Almacén, Precio_Unitario) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("siii", $nombreProducto, $stockLocal, $stockAlmacen, $precioUnitario);
+    $stmt = $conn->prepare("INSERT INTO producto (Nombre_Producto, Stock_Local, Stock_Almacen, Precio_Unitario) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("sddd", $productName, $stockLocal, $stockAlmacen, $unitPrice);
 
-    // Ejecutar la consulta
     if ($stmt->execute()) {
-        echo json_encode(["status" => "success", "message" => "Producto agregado exitosamente"]);
+        echo json_encode(["status" => "success", "message" => "Producto registrado correctamente"]);
     } else {
-        echo json_encode(["status" => "error", "message" => "Error al agregar el producto"]);
+        echo json_encode(["status" => "error", "message" => "Error en la BD: " . $conn->error]);
     }
 
-    // Cerrar la conexión
     $stmt->close();
     $conn->close();
 } else {

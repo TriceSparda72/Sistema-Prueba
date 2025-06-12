@@ -1,0 +1,54 @@
+.container {
+  padding: 20px;
+  max-width: 950px;
+  margin: auto;
+}
+
+.receipt-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-weight: 600;
+  gap: 1rem;
+}
+
+.receipt-header div {
+  background-color: #f1f5f9;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 1rem;
+}
+
+.form-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.form-actions button {
+  background: linear-gradient(135deg, #2b95be, #1e7ba8);
+  color: white;
+  padding: 0.875rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}

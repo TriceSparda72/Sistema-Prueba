@@ -20,10 +20,8 @@ header {
     font-weight: bold;
 }
 
-/* Container */
 .container {
-    display: flex;
-    height: 100vh;
+    display: block; /* Ajuste para evitar la desconfiguración en otras páginas */
 }
 
 /* Botón fijo para desplegar el menú */
@@ -117,6 +115,7 @@ main {
 
 #sidebar.active ~ main {
     margin-left: 250px;
+    width: calc(100% - 250px); /* 👈 Ajuste para que no se sobreponga */
 }
 
 /* Grid container for main page buttons */
